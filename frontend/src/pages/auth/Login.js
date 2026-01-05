@@ -56,7 +56,7 @@ const Login = () => {
             Makongeni Ward
           </h2>
           <p className="mt-2 text-royal-600 dark:text-royal-300 font-medium">
-            Staff Management System
+            Staff Management Portal
           </p>
         </div>
 

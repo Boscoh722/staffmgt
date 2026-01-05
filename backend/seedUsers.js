@@ -12,6 +12,7 @@ const departments = {
   WELFARE: '692fe87076a789c3f5a4c900',
 };
 
+// Fixed default leave balance to match schema (annual.remaining should be 28 to match total)
 const defaultLeave = {
   annual: { total: 28, taken: 0, remaining: 28, pending: 0 },
   maternity: { total: 90, taken: 0, remaining: 90, pending: 0 },
@@ -22,87 +23,221 @@ const defaultLeave = {
 };
 
 const usersData = [
-  { employeeId: '20230000000', firstName: 'Makongeni', lastName: 'Admin', email: 'admin@makongeni.com', password: 'admin16494344', role: 'admin', department: departments.ENVIRONMENT, position: 'Environment officer' },
-  { employeeId: '20230236536', firstName: 'Boscoh', lastName: 'Otieno', email: 'boscobrilli8@gmail.com', password: '0715640443', role: 'supervisor', department: departments.ENVIRONMENT, position: 'Environment officer' },
-  { employeeId: '20230218350', firstName: 'Felix', lastName: 'Peter', email: 'felix123@gmail.com', password: '0703468256', role: 'clerk', department: departments.ENVIRONMENT, position: 'clerk' },
-  { employeeId: '20230255849', firstName: 'Agnes', lastName: 'Waruguru', email: 'waruguruagnes74@gmail.com', password: '0719276260', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230257744', firstName: 'Annastacia', lastName: 'Ndila', email: 'anamutisya531@gmail.com', password: '0745481298', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240136364', firstName: 'Anne', lastName: 'Muthoni', email: 'annemso2024@gmail.com', password: '0714928904', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230217045', firstName: 'Benson', lastName: 'Mutinda', email: 'bensonmutuku330@gmail.com', password: '0795050204', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230262799', firstName: 'Bernard', lastName: 'Otash', email: 'benardoumaotash@gmail.com', password: '0717765982', role: 'staff', department: departments.WELLNESS_AND_PERSONAL_GROWTH, position: 'Spiritual leader' },
-  { employeeId: '20230218635', firstName: 'Brian', lastName: 'Kipkosgei', email: 'briankipkosgei664@gmail.com', password: '0707227529', role: 'staff', department: departments.WELFARE, position: 'Treasurer' },
-  { employeeId: '20230229856', firstName: 'Chebet', lastName: 'Cheres', email: 'chebet123@gmail.com', password: '0726984103', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230268892', firstName: 'Cornelius', lastName: 'Kipkemei', email: 'corneliuskipkemei364@gmail.com', password: '0110554524', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240119817', firstName: 'Elizabeth', lastName: 'Ashley', email: 'dorothyashley32@gmail.com', password: '0728263587', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230257184', firstName: 'Elizabeth', lastName: 'Mwelu', email: 'elizabethmwelu48@gmail.com', password: '0113065005', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240132946', firstName: 'Ephantus', lastName: 'Kiongo', email: 'ephantusm414@gmail.com', password: '0720968757', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230256227', firstName: 'Eugene', lastName: 'Charles', email: 'eugene123@gmail.com', password: '0705271048', role: 'staff', department: departments.LOGISTICS, position: 'logistics officer' },
-  { employeeId: '20230216031', firstName: 'Frida', lastName: 'Atieno', email: 'ochiengfrida38@gmail.com', password: '0746536843', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240125745', firstName: 'Galgalo', lastName: 'Godana', email: 'godanagalgalo825@gmail.com', password: '0745690482', role: 'staff', department: departments.WELFARE, position: 'chairman' },
-  { employeeId: '20230237029', firstName: 'George', lastName: 'Odhiambo', email: 'priestlygeorgekhallid@gmail.com', password: '0792569226', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230216578', firstName: 'Grace', lastName: 'Wangari', email: 'wangariwa4@gmail.com', password: '0714325903', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230239136', firstName: 'Halima', lastName: 'Warema', email: 'halimawarema@gmail.com', password: '0720629718', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230217540', firstName: 'Immaculate', lastName: 'Momanyi', email: 'immaqulatemomanyi@gmail.com', password: '0716299633', role: 'staff', department: departments.PUBLIC_RELATIONS, position: 'deputy spokesperson' },
-  { employeeId: '20240121741', firstName: 'John', lastName: 'Chege', email: 'gajohni1986@gmail.com', password: '0702232397', role: 'staff', department: departments.WELLNESS_AND_PERSONAL_GROWTH, position: 'Ass. Guidance & counselling' },
-  { employeeId: '20240133146', firstName: 'Judith', lastName: 'Wanjugu', email: 'judythwanjugu@gmail.com', password: '0796773374', role: 'staff', department: departments.WELFARE, position: 'secretary' },
-  { employeeId: '20240137912', firstName: 'Kevin', lastName: 'Kimai', email: 'kevkimai8@gmail.com', password: '0724608515', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230219429', firstName: 'Kyalo', lastName: 'Mulei', email: 'kyalomulei3@gmail.com', password: '0713059520', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240122242', firstName: 'Lazarus', lastName: 'Omondi', email: 'lazarusomondi82@gmail.com', password: '0745543664', role: 'staff', department: departments.STORES, position: 'Stores officer' },
-  { employeeId: '20230256073', firstName: 'Lilian', lastName: 'Kawira', email: 'kawiralilian72@gmail.com', password: '0729558364', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240137988', firstName: 'Lucy', lastName: 'Awuor', email: 'lucy123@gmail.com', password: '0711600598', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240193049', firstName: 'Lydiah', lastName: 'Akinyi', email: 'lydiaakinyi633@gmail.com', password: '0702889168', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230244270', firstName: 'Margaret', lastName: 'Mugure', email: 'margaretnyoike25@gmail.com', password: '0711793382', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240194249', firstName: 'Margret', lastName: 'Mukuhi', email: 'margaretmukuhi80@gmail.com', password: '0723791469', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240125208', firstName: 'Meresa', lastName: 'Akoth', email: 'meresaakoth00@gmail.com', password: '0721610935', role: 'staff', department: departments.WELLNESS_AND_PERSONAL_GROWTH, position: 'Guidance & counselling' },
-  { employeeId: '20240127022', firstName: 'Mirriam', lastName: 'Njoki', email: 'njokimiriiam@gmail.com', password: '0712838387', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230221515', firstName: 'Nancy', lastName: 'Agiso', email: 'nancyagiso@gmail.com', password: '0718210643', role: 'staff', department: departments.STORES, position: 'stores in charge' },
-  { employeeId: '20240127886', firstName: 'Olivia', lastName: 'Anyango', email: 'oliviaagla45@gmail.com', password: '0795425623', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20230236293', firstName: 'Pamela', lastName: 'Anyango', email: 'pameladanga381@gmail.com', password: '0797487738', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240146212', firstName: 'Pascal', lastName: 'Omondi', email: 'opasohazard@gmail.com', password: '0792470590', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240126864', firstName: 'Purity', lastName: 'Tungani', email: 'purity123@gmail.com', password: '0713626824', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240121262', firstName: 'Stavy', lastName: 'Awuor', email: 'stavyotieno@gmail.com', password: '0716842889', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240128078', firstName: 'Titus', lastName: 'Mutinda', email: 'titusmbatha45@gmail.com', password: '0702210078', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
-  { employeeId: '20240136225', firstName: 'Zipporah', lastName: 'Kerubo', email: 'zipkerubo6@gmail.com', password: '0705271048', role: 'staff', department: departments.ENVIRONMENT, position: 'support staff' },
+  // Admin user
+  { 
+    employeeId: '20230000000', 
+    firstName: 'Makongeni', 
+    lastName: 'Admin', 
+    email: 'admin@makongeni.com', 
+    password: 'admin16494344', 
+    role: 'admin', 
+    department: departments.ENVIRONMENT, 
+    position: 'System Administrator' 
+  },
+  // Supervisor
+  { 
+    employeeId: '20230236536', 
+    firstName: 'Boscoh', 
+    lastName: 'Otieno', 
+    email: 'boscobrilli8@gmail.com', 
+    password: '715640443', 
+    role: 'supervisor', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Supervisor' 
+  },
+  // Clerk
+  { 
+    employeeId: '20230230000', 
+    firstName: 'Felix', 
+    lastName: 'Sudan', 
+    email: 'felix123@gmail.com', 
+    password: '703468256', 
+    role: 'clerk', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Clerk' 
+  },
+  // Staff members
+  { 
+    employeeId: '20230217508', 
+    firstName: 'ANN', 
+    lastName: 'NJOKI KAGURU', 
+    email: 'annekaguru65@gmail.com', 
+    password: '713250004', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230237304', 
+    firstName: 'NELLY', 
+    lastName: 'CHEPLETING', 
+    email: 'chepletingnelly0@gmail.com', 
+    password: '724982597', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230235792', 
+    firstName: 'CONSTANCE', 
+    lastName: 'MWENDE MUEMA', 
+    email: 'conniemwesh17@gmail.com', 
+    password: '708384184', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20240194087', 
+    firstName: 'SAMUEL', 
+    lastName: 'GATHI CHEGE', 
+    email: 'gathis160@gmail.com', 
+    password: '768342438', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230239241', 
+    firstName: 'LAZARUS', 
+    lastName: 'JUMA OJIAMBO', 
+    email: 'lazarusjuma8@gmail.com', 
+    password: '719293847', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20240126458', 
+    firstName: 'STEPHEN', 
+    lastName: 'OMUSULA', 
+    email: 'omusullah@gmail.com', 
+    password: '797276096', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230235124', 
+    firstName: 'TAUSI', 
+    lastName: 'OPATI ATEMO', 
+    email: 'tausiopati@gmail.com', 
+    password: '721516196', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230231201', 
+    firstName: 'PRISCILLA', 
+    lastName: 'MUTINDI NGWATU', 
+    email: 'tishpriscilla@gmail.com', 
+    password: '703705029', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  },
+  { 
+    employeeId: '20230257100', 
+    firstName: 'WINNIE', 
+    lastName: 'IVY OCHIENG', 
+    email: 'winnyivy4@gmail.com', 
+    password: '114044729', 
+    role: 'staff', 
+    department: departments.ENVIRONMENT, 
+    position: 'Environment Staff' 
+  }
 ];
-
-const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  return await bcrypt.hash(password, salt);
-};
 
 const seedUsers = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
+    console.log('Connected to MongoDB');
 
+    // Clear existing users
     await User.deleteMany({});
+    console.log('Cleared existing users');
 
-    const createdUsers = [];
+    const currentDate = new Date();
+    console.log(`Setting dateOfJoining to: ${currentDate.toDateString()}`);
 
-    for (const u of usersData) {
+    // Find or create admin user first
+    const adminUser = new User({
+      ...usersData[0],
+      leaveBalance: defaultLeave,
+      supervisor: null, // Admin has no supervisor
+      dateOfJoining: currentDate
+    });
+    await adminUser.save();
+    console.log(`Created admin user: ${adminUser.email}`);
+
+    const createdUsers = [adminUser];
+
+    // Create supervisor (Boscoh Otieno)
+    const supervisorUser = new User({
+      ...usersData[1],
+      leaveBalance: defaultLeave,
+      supervisor: adminUser._id, // Supervisor reports to admin
+      dateOfJoining: currentDate
+    });
+    await supervisorUser.save();
+    createdUsers.push(supervisorUser);
+    console.log(`Created supervisor user: ${supervisorUser.email}`);
+
+    // Create all other users (starting from index 2)
+    for (let i = 2; i < usersData.length; i++) {
+      const userData = usersData[i];
+      
+      // For staff members in Environment department, assign supervisor
+      // All non-admin/supervisor users report to the supervisor
+      const supervisorId = supervisorUser._id;
+
       const user = new User({
-        ...u,
-        password: u.password
+        ...userData,
+        leaveBalance: defaultLeave,
+        supervisor: supervisorId,
+        // Add other optional fields with default values
+        phoneNumber: userData.password, // Using password as phone number
+        isActive: true,
+        qualifications: [],
+        // Set date of joining to current date
+        dateOfJoining: currentDate
       });
+
       await user.save();
+      createdUsers.push(user);
+      console.log(`Created user: ${user.email} (${user.role})`);
     }
 
+    console.log(`\n✅ Successfully seeded ${createdUsers.length} users`);
+    console.log(`📊 Breakdown:`);
+    console.log(`   Admin: ${createdUsers.filter(u => u.role === 'admin').length}`);
+    console.log(`   Supervisor: ${createdUsers.filter(u => u.role === 'supervisor').length}`);
+    console.log(`   Clerk: ${createdUsers.filter(u => u.role === 'clerk').length}`);
+    console.log(`   Staff: ${createdUsers.filter(u => u.role === 'staff').length}`);
 
-    const admin = createdUsers.find(u => u.role === 'admin');
-
-    for (const user of createdUsers) {
-      if (user.role !== 'admin') {
-        user.supervisor = admin._id;
-        await user.save();
-      }
-    }
+    // Display login credentials for testing
+    console.log(`\n🔐 Test Login Credentials:`);
+    console.log(`   Admin: email: admin@makongeni.com, password: admin16494344`);
+    console.log(`   Supervisor: email: boscobrilli8@gmail.com, password: 715640443`);
+    console.log(`   Clerk: email: felix123@gmail.com, password: 703468256`);
+    console.log(`   Staff: email: annekaguru65@gmail.com, password: 713250004`);
+    console.log(`\n📅 All users joined on: ${currentDate.toDateString()}`);
 
   } catch (err) {
-    console.error(err);
+    console.error('❌ Seeding error:', err);
+    process.exit(1);
   } finally {
     await mongoose.connection.close();
+    console.log('Database connection closed');
     process.exit(0);
   }
 };
 
-seedUsers();
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  console.error('Unhandled Promise Rejection:', err);
+  process.exit(1);
+});
 
+seedUsers();
