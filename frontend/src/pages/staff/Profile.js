@@ -259,7 +259,7 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* Quick Stats */}
+            {/* Quick Stats
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="bg-gradient-to-r from-royal-50 to-royal-100/50 dark:from-royal-900/20 dark:to-royal-900/10 p-4 rounded-xl border border-royal-200 dark:border-royal-800 text-center">
                 <div className="text-2xl font-bold text-royal-700 dark:text-royal-300">15</div>
@@ -269,7 +269,7 @@ const Profile = () => {
                 <div className="text-2xl font-bold text-mustard-700 dark:text-mustard-300">220</div>
                 <div className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">Days Present</div>
               </div>
-            </div>
+            </div> */}
 
             {/* Employee ID */}
             <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-neutral-50 to-neutral-100/50 dark:from-neutral-900/20 dark:to-neutral-900/10 border border-neutral-200 dark:border-neutral-800">
